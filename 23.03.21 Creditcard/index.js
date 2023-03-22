@@ -15,7 +15,8 @@ function validateCreditCard(creditCardNum) {
             result.error = "invalid characters"
         }
     };
-
+    // 1. Direction
+    /* 
     let twoDifferentNum = false;
     for (let i=1; i<ccNumArray.length; i++) {
         if(ccNumArray[i] !== ccNumArray[i-1]) {
@@ -28,6 +29,19 @@ function validateCreditCard(creditCardNum) {
         result.error = "need more than 1 unique digit";
         return result;
     };
+    */
+    // 2. Direction
+    let leerArr = [];
+    for(let i=0; i<ccNumArray.length; i++) {
+        if(leerArr.includes(ccNumArray[i]) === false) {
+            leerArr.push(ccNumArray[i]);
+        }
+    }
+    if(leerArr.length === 1) {
+        result.valid = false;
+        result.error = "need more than 1 unique digit";
+        return result;
+    }
 
     if(ccNumArray[ccNumArray.length - 1] % 2 !== 0) {
         result.valid = false;
